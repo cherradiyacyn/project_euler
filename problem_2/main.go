@@ -25,11 +25,11 @@ func main() {
 		os.Exit(1)
 	}
 
-	sumOfEvens := func(l int) int {
+	sumOfEvens := func(limit int) int {
 		var f1, f2, fn, sum int
 		f2 += 1
 		fn = f1 + f2
-		for i := 0; fn <= l; i++ {
+		for i := 0; fn < limit; i++ {
 			if fn%2 == 1 {
 				sum += fn
 			}
