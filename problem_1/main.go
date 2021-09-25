@@ -15,12 +15,12 @@ func main() {
 		os.Exit(1)
 	}
 
-	in, err := strconv.Atoi(os.Args[1])
+	input, err := strconv.Atoi(os.Args[1])
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%v\n", err)
 		os.Exit(1)
 	}
-	if in > max || in < 3 {
+	if input > max || input < 3 {
 		fmt.Printf("Retry with : 2 < n < %d\n", max)
 		os.Exit(1)
 	}
@@ -33,7 +33,7 @@ func main() {
 			}
 		}
 		return s
-	}(in)
+	}(input)
 
-	fmt.Printf("sum of all the multiples of 3 or 5 below %d is : %d\n", in, sumOfMultiples)
+	fmt.Printf("sum of all the multiples of 3 or 5 below %d is : %d\n", input, sumOfMultiples)
 }

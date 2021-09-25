@@ -20,12 +20,12 @@ func main() {
 		os.Exit(1)
 	}
 
-	ndigits, err := strconv.Atoi(os.Args[1])
+	input, err := strconv.Atoi(os.Args[1])
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%v\n", err)
 		os.Exit(1)
 	}
-	if ndigits > 3 || ndigits < 2 {
+	if input > 3 || input < 2 {
 		fmt.Printf("Retry with : 1 < n < 4\n")
 		os.Exit(1)
 	}
@@ -37,7 +37,7 @@ func main() {
 		}
 		n, _ := strconv.Atoi((string(bs)))
 		return n
-	}(ndigits)
+	}(input)
 
 	largestPalindrome := func(limit int) string {
 		var lp int
@@ -53,5 +53,5 @@ func main() {
 		return strconv.Itoa(lp)
 	}(number)
 
-	fmt.Printf("The largest palindrome made from the product of two %d-digit numbers is : %s\n", ndigits, largestPalindrome)
+	fmt.Printf("The largest palindrome made from the product of two %d-digit numbers is : %s\n", input, largestPalindrome)
 }

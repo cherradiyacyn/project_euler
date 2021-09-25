@@ -15,12 +15,12 @@ func main() {
 		os.Exit(1)
 	}
 
-	limit, err := strconv.Atoi(os.Args[1])
+	input, err := strconv.Atoi(os.Args[1])
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%v\n", err)
 		os.Exit(1)
 	}
-	if limit > max || limit < 1 {
+	if input > max || input < 1 {
 		fmt.Printf("Retry with : 0 < n < %d\n", max)
 		os.Exit(1)
 	}
@@ -28,11 +28,11 @@ func main() {
 	primes := []int{2}
 	next := primes[len(primes)-1] + 1
 
-	for c := len(primes); c < limit; next += 2 {
+	for c := len(primes); c < input; next += 2 {
 
-		isPrime := func(n int, primes []int) bool {
+		isPrime := func(number int, primes []int) bool {
 			for _, p := range primes {
-				if n%p == 0 {
+				if number%p == 0 {
 					return false
 				}
 			}
@@ -45,5 +45,5 @@ func main() {
 		}
 	}
 
-	fmt.Printf("The %dth prime number is : %d\n", limit, primes[len(primes)-1])
+	fmt.Printf("The %dth prime number is : %d\n", input, primes[len(primes)-1])
 }

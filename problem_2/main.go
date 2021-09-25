@@ -15,12 +15,12 @@ func main() {
 		os.Exit(1)
 	}
 
-	limit, err := strconv.Atoi(os.Args[1])
+	input, err := strconv.Atoi(os.Args[1])
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%v\n", err)
 		os.Exit(1)
 	}
-	if limit > max || limit < 2 {
+	if input > max || input < 2 {
 		fmt.Printf("Retry with : 1 < n < %d\n", max)
 		os.Exit(1)
 	}
@@ -38,7 +38,7 @@ func main() {
 			f2 = fn
 		}
 		return sum
-	}(limit)
+	}(input)
 
-	fmt.Printf("The sum of the even-valued terms in the Fibonacci sequence whose values do not exceed %d is : %d\n", limit, sumOfEvens)
+	fmt.Printf("The sum of the even-valued terms in the Fibonacci sequence whose values do not exceed %d is : %d\n", input, sumOfEvens)
 }

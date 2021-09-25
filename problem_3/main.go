@@ -18,22 +18,22 @@ func main() {
 		os.Exit(1)
 	}
 
-	number, err := strconv.Atoi(os.Args[1])
+	input, err := strconv.Atoi(os.Args[1])
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%v\n", err)
 		os.Exit(1)
 	}
-	if number > max || number < 2 {
+	if input > max || input < 2 {
 		fmt.Printf("Retry with : 1 < n < %d\n", max)
 		os.Exit(1)
 	}
 
-	largest := func(n int) int {
-		var l int
+	largestPrimeFactor := func(number int) int {
+		var lpf int
 		var isPrime bool
-		for n > 1 {
+		for number > 1 {
 			if isPrime {
-				l = n
+				lpf = number
 				break
 			}
 			primesFile, err := os.Open("prime_numbers.txt")
@@ -44,9 +44,9 @@ func main() {
 			scanr := bufio.NewScanner(primesFile)
 			for scanr.Scan() {
 				pn, _ := strconv.Atoi(scanr.Text())
-				if n%pn == 0 {
-					l = pn
-					n /= pn
+				if number%pn == 0 {
+					lpf = pn
+					number /= pn
 					break
 				}
 				if pn > int(math.Sqrt(max)) {
@@ -55,8 +55,8 @@ func main() {
 			}
 			primesFile.Close()
 		}
-		return l
-	}(number)
+		return lpf
+	}(input)
 
-	fmt.Printf("The largest prime factor of the number %d is : %d\n", number, largest)
+	fmt.Printf("The largest prime factor of the number %d is : %d\n", input, largestPrimeFactor)
 }
