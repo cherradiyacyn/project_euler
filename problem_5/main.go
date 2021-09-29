@@ -63,7 +63,7 @@ func main() {
 		return sm
 	}(input)
 
-	lcm := func(limit int, sm []map[int]int) int {
+	leastCommonMultiple := func(limit int, sm []map[int]int) int {
 		m := make(map[int]int, 0)
 		for i := 2; i <= limit; i++ {
 			c := 0
@@ -83,7 +83,7 @@ func main() {
 		return lcm
 	}(input, primeDecompositions)
 
-	fmt.Printf("The smallest positive number that is evenly divisible by all of the numbers from 1 to %d is : %d\n", input, lcm)
+	fmt.Printf("The smallest positive number that is evenly divisible by all of the numbers from 1 to %d is : %d\n", input, leastCommonMultiple)
 }
 
 // https://youtu.be/2bIK1KkQ1k0
